@@ -94,15 +94,6 @@ def update_target_point(dts):
 		target_matrix = MathsSupp.rotate_matrix(target_matrix, mr.Normalized(), mr.Len() * rot_inertia * dts * 60)
 
 
-def update_track_translation(camera: hg.Node, dts):
-	global camera_move
-	trans = camera.GetTransform()
-	camera_pos = trans.GetPosition()
-	new_position = target_point + target_matrix.GetX() * track_position.x + target_matrix.GetY() * track_position.y + target_matrix.GetZ() * track_position.z
-	trans.SetPosition(new_position)
-	camera_move = new_position - camera_pos
-	return new_position
-
 
 def update_follow_translation(camera: hg.Node, dts):
 	global camera_move
